@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shoe-los | Flyer Lavado de Tenis</title>
+  <meta name="description" content="Flyer para servicio de lavado de tenis con precio especial de familia." />
+  <style>
+    :root{
+      --bg:#0f0f12;
+      --card:#14161a;
+      --accent:#00e0b8;
+      --muted:#9aa3af;
+      --text:#fbfbfc;
+      --glow:0 0 0 2px rgba(0,224,184,.2),0 20px 60px -20px rgba(0,224,184,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 20% -10%, #123 0%, var(--bg) 60%);
+      letter-spacing:.2px;
+    }
+    .flyer{
+      max-width: 920px;
+      margin: 24px auto;
+      padding: clamp(16px, 3vw, 32px);
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 28px;
+      box-shadow: 0 20px 80px rgba(0,0,0,.45);
+      position: relative;
+      overflow:hidden;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: clamp(16px, 3vw, 32px);
+    }
+    header{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px
+    }
+    .logo{
+      display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.5px
+    }
+    .logo-mark{
+      width:44px;height:44px;border-radius:50%;
+      background: conic-gradient(from 180deg, var(--accent) 0 40%, #1e293b 40% 100%);
+      border:2px solid rgba(255,255,255,.12);
+      box-shadow: var(--glow);
+      position:relative;
+    }
+    .logo-mark:after{
+      content:"";position:absolute;inset:8px;border-radius:50%;
+      background: radial-gradient(circle at 60% 40%, #fff7, #fff0 55%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M21 7c-1 .7-2.1 1-3.3 1.2c.9-.6 1.6-1.4 1.9-2.6c-1 .6-2 .9-3.2 1.1C15.6 5.2 14.3 4.5 12.9 4.5c-2.8 0-4.9 2.5-4.2 5.2C6 9.6 3.6 8.3 2 6.2c-.8 1.4-.4 3.2.9 4.2c-.8 0-1.5-.2-2.1-.6c0 1.9 1.3 3.5 3.1 3.9c-.6.2-1.3.2-2 .1c.6 1.7 2.2 2.9 4.1 3c-1.9 1.5-4.2 2.2-6.6 2c2 .1 3.9.6 5.5 1.4c6.6 3 14.5-.8 15.6-8.4c.1-.6.1-1.1.1-1.7C19.6 9.1 20.4 8.1 21 7z"/></svg>') center/60% no-repeat;
+      border:1px solid rgba(255,255,255,.12)
+    }
+    .brand{font-size:clamp(22px, 3.5vw, 34px)}
+    .chip{font-size:12px;padding:.35rem .55rem;border:1px solid rgba(255,255,255,.12);border-radius:999px;color:var(--muted)}
+
+    .hero{
+      padding: 12px 0 8px;
+      display:flex;flex-direction:column;gap:10px
+    }
+    h1{
+      font-size: clamp(28px, 6.2vw, 62px);
+      line-height: 1.02;
+      margin: 0;
+      letter-spacing:.3px
+    }
+    .subtitle{color:var(--muted);font-size:clamp(14px, 1.6vw, 18px)}
+
+    .price-card{
+      background: linear-gradient(180deg, rgba(0,224,184,.12), rgba(0,224,184,.04));
+      border:1px solid rgba(0,224,184,.45);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: var(--glow);
+      display:grid;grid-template-columns: 1fr 1fr;gap:12px;align-items:center
+    }
+    .price{
+      font-size: clamp(22px, 4.5vw, 42px);
+      margin:0;font-weight:900
+    }
+    .price s{opacity:.7}
+    .badge{
+      justify-self:end;align-self:start
+    }
+    .badge span{
+      display:inline-block;padding:.4rem .7rem;border-radius:999px;
+      border:1px dashed rgba(255,255,255,.35);font-weight:700
+    }
+    .cta{
+      display:flex;flex-wrap:wrap;gap:10px;margin-top:12px
+    }
+    .btn{
+      background: var(--accent);color:#04231e;font-weight:800;
+      border:none;border-radius:14px;padding:12px 16px;text-decoration:none;
+      box-shadow: 0 10px 24px -12px rgba(0,224,184,.7);
+    }
+    .btn.secondary{
+      background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.18)
+    }
+
+    .card{
+      background: var(--card);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .list{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+    .list li{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);padding:10px;border-radius:12px}
+
+    .aside{
+      position:relative;
+      background: radial-gradient(140% 100% at 100% 0%, rgba(0,224,184,.12), rgba(255,255,255,0) 60%);
+      border-left:1px solid rgba(255,255,255,.06);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .qr{
+      width: 180px;aspect-ratio:1;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.2);
+      background:#fff
+    }
+    .small{font-size:12px;color:var(--muted)}
+
+    footer{margin-top:18px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:12px}
+
+    /* Print layout (A4) */
+    @page{size:A4;margin:12mm}
+    @media print{
+      body{background:#fff;color:#000}
+      .flyer{box-shadow:none;border-color:#ddd}
+      .btn{filter:grayscale(1)}
+      .aside{background:none}
+      .qr{border-color:#000}
+    }
+
+    /* Mobile */
+    @media (max-width: 800px){
+      .grid{grid-template-columns:1fr}
+      .price-card{grid-template-columns:1fr}
+      .badge{justify-self:start}
+      .list{grid-template-columns:1fr}
+      footer{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <main class="flyer">
+    <header>
+      <div class="logo">
+        <div class="logo-mark" aria-hidden="true"></div>
+        <div class="brand">Shoe-los</div>
+      </div>
+      <div class="chip">Lavado profesional de tenis</div>
+    </header>
+
+    <section class="grid">
+      <div>
+        <div class="hero">
+          <h1>¡Tenis limpios, estilo al 100!</h1>
+          <p class="subtitle">Quitamos manchas, olores y bacterias con cuidado premium para que tus sneakers se vean como nuevos.</p>
+        </div>
+
+        <div class="price-card">
+          <p class="price">
+            <span>Precio normal: <s>$100</s></span><br/>
+            <span>Precio especial <strong>FAMILIA</strong>: $70</span>
+          </p>
+          <div class="badge"><span>DESCUENTO EXCLUSIVO PARA FAMILIA</span></div>
+          <div class="cta">
+            <a class="btn" href="https://wa.me/528113683092?text=Hola%20Shoe-los%2C%20quiero%20agendar%20un%20lavado%20de%20tenis%20%F0%9F%91%9F" target="_blank" rel="noopener">Agendar por WhatsApp</a>
+            <a class="btn secondary" href="#servicios">Ver servicios</a>
+          </div>
+          <p class="small">*Válido sólo para familia. Precio regular para público general: $100 MXN por par.</p>
+        </div>
+
+        <section id="servicios" class="card" aria-labelledby="tservicios">
+          <h2 id="tservicios" style="margin:0 0 8px 0">¿Qué incluye?</h2>
+          <ul class="list">
+            <li>Lavado profundo de suela, upper y agujetas</li>
+            <li>Desinfección anti-olor y bacterias (UV + solución)</li>
+            <li>Secado al aire sin deformaciones</li>
+            <li>Protección repelente de suciedad ligera</li>
+          </ul>
+        </section>
+
+        <section class="card" style="margin-top:12px" aria-labelledby="tadicional">
+          <h2 id="tadicional" style="margin:0 0 8px 0">Extras opcionales</h2>
+          <ul class="list">
+            <li>Blanqueo de midsole</li>
+            <li>Reacondicionado de agujetas</li>
+            <li>Limpieza de plantillas</li>
+            <li>Protector hidrofóbico de larga duración</li>
+          </ul>
+        </section>
+      </div>
+
+      <aside class="aside">
+        <h3 style="margin-top:0">Contacto</h3>
+        <p>Monterrey, NL · Atención por mensajes</p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/528113683092" target="_blank" rel="noopener">+52 811 368 3092</a></p>
+        <div class="qr" aria-label="QR a WhatsApp">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https%3A%2F%2Fwa.me%2F528113683092" alt="Código QR para WhatsApp Shoe-los" style="width:100%;height:100%;display:block"/>
+        </div>
+        <p class="small" style="margin-top:10px">Escanea para enviar mensaje directo.</p>
+
+        <div class="card" style="margin-top:12px">
+          <h3 style="margin:0 0 8px 0">Horarios</h3>
+          <p style="margin:0">Lun–Sáb · 10:00–19:00</p>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h3 style="margin:0 0 8px 0">Nota</h3>
+          <p style="margin:0">Trae tus tenis en bolsa. Tiempo de entrega estimado: 24–48 h por par.</p>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Shoe-los · Lavado de tenis</div>
+      <div class="small">Este flyer es una página HTML; puedes imprimirla o compartir el enlace.</div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
